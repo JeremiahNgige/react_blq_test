@@ -1,12 +1,16 @@
 import type {Metadata} from "next";
-import {Poppins} from "next/font/google";
+import {Poppins, Roboto_Serif} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/app/components/nav/NavBar";
-import Footer from "@/app/components/footer/Footer";
+import Body from "@/app/components/body/Body";
+import React from "react";
+import {NextUIProvider} from "@nextui-org/react"
+import {Providers} from "@/app/app";
 
 
 // const inter = Inter({subsets: ["latin"]});
 const poppins = Poppins({subsets: ["latin"], weight: ["400", "700"]});
+const serif = Roboto_Serif({subsets: ['latin'], weight: ["400", "700"]});
 
 export const metadata: Metadata = {
     title: "E-Commerce",
@@ -20,13 +24,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-        <body className={poppins.className}>
-        <NavBar></NavBar>
-        <Footer></Footer>
+        <body className={serif.className}>
+        <Providers>
+            <NavBar></NavBar>
+            <Body></Body>
+        </Providers>
+
         <main>
             {children}
         </main>
-        <Footer></Footer>
         </body>
         </html>
     );

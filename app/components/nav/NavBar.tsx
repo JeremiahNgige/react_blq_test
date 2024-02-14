@@ -1,17 +1,15 @@
 import Container from "@/app/components/Container";
-import React from "react";
 import Link from "next/link";
-import {Redressed} from "next/font/google";
+import {Input, Button} from "@nextui-org/react";
+import MenuIcon from '@mui/icons-material/Menu';
 
-const redressed = Redressed({subsets: ['latin'], weight: ['400']});
 
 const NavBar = () => {
-
     return <div className="
     sticky
     top-0
     w-full
-    bg-slate-200
+    bg-white
     z-30
     shadow-sm
     ">
@@ -21,12 +19,23 @@ const NavBar = () => {
                 flex
                 items-center
                 justify-between
-                gap-3
+                gap-2
                 md:gap-0
                 ">
-                    <Link href={"/"}
-                          className={`${redressed.className} font-bold text-2xl accent-green-600`}>Testvalley</Link>
-                    <div className="hidden md:block">Search Bar</div>
+                    <div className="flex items-center gap-8 md:gap-10">
+                        <Link href={"/"} style={{color: "green"}}
+                              className={"font-bold text-2xl font-sans"}>Testvalley</Link>
+                        <div className={"flex flex-row row-auto"}>
+                            <Button className={" items-center green m-0"} variant={"light"} isIconOnly
+                                    aria-label="Like">
+                                <MenuIcon style={{color: "green"}}></MenuIcon>
+                            </Button>
+                            <h1 style={{color: "green", margin: "m-0"}}> Categories</h1>
+                        </div>
+                    </div>
+                    <div className="flex w-1/4 flex-row  gap-4">
+                        <Input type="email" label="" placeholder="Search here"/>
+                    </div>
                     <div className="flex items-center gap-8 md:gap-12">
                         <div>User Menu</div>
                         <div>Cart Count</div>
